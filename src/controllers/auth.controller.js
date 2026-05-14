@@ -1,6 +1,6 @@
-const prisma = require("../lib/prisma");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const prisma = require("../lib/prisma"); //Base de datos
+const bcrypt = require("bcryptjs"); //Encriptar password
+const jwt = require("jsonwebtoken"); //Mantener sesión
 
 // REGISTER
 const register = async (req, res) => {
@@ -33,7 +33,7 @@ const login = async (req, res) => {
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) return res.status(400).json({ error: "Password incorrecta" });
 
-    const token = jwt.sign(
+    const token = jwt.sign( //Si todo es correcto, creamos el token
       { id: user.id, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
