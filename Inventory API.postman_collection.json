@@ -1,0 +1,353 @@
+{
+  "info": {
+    "_postman_id": "0bcb3f96-11a0-4037-b71a-e3ec04d8614a",
+    "name": "Inventory API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "15943701"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"demo\",\n  \"email\": \"demo@test.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "https://inventory-api-production-739c.up.railway.app/api/auth/register",
+              "protocol": "https",
+              "host": [
+                "inventory-api-production-739c",
+                "up",
+                "railway",
+                "app"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"demo@test.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "https://inventory-api-production-739c.up.railway.app/api/auth/login",
+              "protocol": "https",
+              "host": [
+                "inventory-api-production-739c",
+                "up",
+                "railway",
+                "app"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer"
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Electronics\"\n}"
+            },
+            "url": {
+              "raw": "https://inventory-api-production-739c.up.railway.app/api/categories",
+              "protocol": "https",
+              "host": [
+                "inventory-api-production-739c",
+                "up",
+                "railway",
+                "app"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://inventory-api-production-739c.up.railway.app/api/categories",
+              "protocol": "https",
+              "host": [
+                "inventory-api-production-739c",
+                "up",
+                "railway",
+                "app"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_TOKEN"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Mechanical Keyboard\",\n  \"sku\": \"KB-001\",\n  \"price\": 59.99,\n  \"stock\": 10,\n  \"categoryId\": 1\n}"
+            },
+            "url": {
+              "raw": "https://inventory-api-production-739c.up.railway.app/api/products",
+              "protocol": "https",
+              "host": [
+                "inventory-api-production-739c",
+                "up",
+                "railway",
+                "app"
+              ],
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_TOKEN"
+              }
+            ],
+            "url": {
+              "raw": "https://inventory-api-production-739c.up.railway.app/api/products",
+              "protocol": "https",
+              "host": [
+                "inventory-api-production-739c",
+                "up",
+                "railway",
+                "app"
+              ],
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Product By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_TOKEN"
+              }
+            ],
+            "url": {
+              "raw": "https://inventory-api-production-739c.up.railway.app/api/products/1",
+              "protocol": "https",
+              "host": [
+                "inventory-api-production-739c",
+                "up",
+                "railway",
+                "app"
+              ],
+              "path": [
+                "api",
+                "products",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_TOKEN"
+              }
+            ],
+            "url": {
+              "raw": "https://inventory-api-production-739c.up.railway.app/api/products/1",
+              "protocol": "https",
+              "host": [
+                "inventory-api-production-739c",
+                "up",
+                "railway",
+                "app"
+              ],
+              "path": [
+                "api",
+                "products",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Protected Route",
+      "item": [
+        {
+          "name": "Protected Test",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_TOKEN"
+              }
+            ],
+            "url": {
+              "raw": "https://inventory-api-production-739c.up.railway.app/api/protected",
+              "protocol": "https",
+              "host": [
+                "inventory-api-production-739c",
+                "up",
+                "railway",
+                "app"
+              ],
+              "path": [
+                "api",
+                "protected"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzc4ODQxMzUyLCJleHAiOjE3Nzg5Mjc3NTJ9.2I3EpKClSifdaJ0RwRqzM_Dceg9uXzqJmz7VWDWckyY",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
