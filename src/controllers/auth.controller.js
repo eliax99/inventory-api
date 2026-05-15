@@ -16,7 +16,9 @@ const register = async (req, res) => {
       data: { name, email, password: hashed },
     });
 
-    res.json(user);
+    const { password, ...safeUser } = user;
+
+    res.status(201).json(safeUser);
   } catch (err) {
     res.status(500).json({ error: "Error en register" });
   }
@@ -33,10 +35,11 @@ const login = async (req, res) => {
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) return res.status(400).json({ error: "Password incorrecta" });
 
-    const token = jwt.sign( //Si todo es correcto, creamos el token
+    const token = jwt.sign(
+      //Si todo es correcto, creamos el token
       { id: user.id, role: user.role },
       process.env.JWT_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "1d" },
     );
 
     res.json({ token });
